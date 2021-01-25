@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="reg">
+        <mycon></mycon>
+    </div>
+</body>
+<script>
+    Vue.component('mycon', {
+        template:'<h1 @click=show>hello</h1>',
+        data:function(){
+            return {
+                
+            }
+        },
+        methods:{
+            show(){
+                alert('aaa')
+            }
+        }
+    })
+
+
+    var reg = new Vue({
+        el:'#reg'
+    })
+
+    
+</script>
+</html>
