@@ -8,28 +8,45 @@
 </head>
 <body>
     <div id="reg">
-        <mycon></mycon>
+        <mycon :newmsg='msg' @newshow='show' ref="mycon"></mycon>
+        <h2  ref="h2">hhh</h2>
     </div>
+    <template id="temp">
+        <h1 @click="btn">hello {{newmsg}}</h1>
+    </template>
 </body>
+
 <script>
     // 组件的使用
     Vue.component('mycon', {
-        template:'<h1 @click=show>hello</h1>',
-        data:function(){
+        template:'#temp',
+        data(){
             return {
-
+               count:0
             }
         },
+        props:{
+          newmsg:{type:String}  
+        },
         methods:{
-            show(){
-                alert('aaa')
+            btn(){
+                this.$emit('newshow',this.count++)
+                console.log('aa')
             }
         }
     })
 
 
     var reg = new Vue({
-        el:'#reg'
+        el:'#reg',
+        data:{
+            msg:"h"
+        },
+        methods:{
+            show(data){
+                console.log('aaaa',data,this.$refs.h2.innerText,this.$refs.mycon.count)
+            }
+        }
     })
 
     
